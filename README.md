@@ -12,7 +12,7 @@ mvn clean package
 cd api/target
 java -jar work-clock-api-1.0.0-SNAPSHOT.jar
 ```
-Available at: localhost:8080/v1/images
+Available at: localhost:8002/v1/workevent
 
 ## Docker commands
 ```bash
@@ -28,11 +28,11 @@ docker push janezs12/workclock
 kubectl version
 kubectl --help
 kubectl get nodes
-kubectl create -f work-clock-deployment.yaml 
-kubectl apply -f work-clock-deployment.yaml 
+kubectl create -f .\deployment.yaml 
+kubectl apply -f .\deployment.yaml 
 kubectl get services 
 kubectl get deployments
 kubectl get pods
-kubectl logs work-clock-deployment-6f59c5d96c-rjz46
-kubectl delete pod work-clock-deployment-6f59c5d96c-rjz46
+kubectl logs work-clock-deployment-84db9697f5-fk9sp
+kubectl delete pod work-clock-deployment-84db9697f5-fk9sp
 ```

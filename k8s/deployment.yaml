@@ -13,15 +13,15 @@ spec:
         app: work-clock
     spec:
       containers:
-        - image: prporso/work-clock:test #to be changed
+        - image: janezs12/workclock:latest
           name: work-clock
           env:
-            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: #connection url
-            - name: KUMULUZEE_DATASOURCES0_USERNAME
-              value: #username
-            - name: KUMULUZEE_DATASOURCES0_PASSWORD
-              value: #password
+        - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+          value: jdbc:postgresql://flora.db.elephantsql.com:5432/your-database-name
+        - name: KUMULUZEE_DATASOURCES0_USERNAME
+          value: wwdvuxwy
+        - name: KUMULUZEE_DATASOURCES0_PASSWORD
+          value: 9To7p1-B3HIFXW_O_RTm2qS5sWyWOhe5
           ports:
             - containerPort: 8002
               name: server
