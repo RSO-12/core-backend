@@ -4,9 +4,9 @@ kumuluzee:
     name: dev
   version: 1.0.0
   server:
-    base-url: http://localhost:8002
+    base-url: http://localhost:8080
     http:
-      port: 8002
+      port: 8080
   datasources:
     - jndi-name: jdbc/ImageMetadataDS
       connection-url: jdbc:postgresql://localhost:5432/image-metadata

@@ -6,7 +6,7 @@ WORKDIR /app
 
 ADD ./api/target/work-clock-api-1.0.0-SNAPSHOT.jar /app
 
-EXPOSE 8002
+EXPOSE 8080
 
 CMD ["java", "-jar", "work-clock-api-1.0.0-SNAPSHOT.jar"]
 #ENTRYPOINT ["java", "-jar", "work-clock-api-1.0.0-SNAPSHOT.jar"]

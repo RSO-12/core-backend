@@ -15,6 +15,6 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
         license = @License(name = "dev"), description = "API for managing work time."),
         servers = @Server(url = "http://localhost:8080/"))
 @ApplicationPath("/v1")
-public class ImageMetadataApplication extends Application {
+public class WorkClockApplication extends Application {
 
 }
