@@ -1,7 +1,7 @@
-package si.fri.rso.samples.imagecatalog.models.converters;
+package jb.workclock.models.converters;
 
-import si.fri.rso.samples.imagecatalog.lib.ImageMetadata;
-import si.fri.rso.samples.imagecatalog.models.entities.ImageMetadataEntity;
+import jb.workclock.lib.ImageMetadata;
+import jb.workclock.models.entities.ImageMetadataEntity;
 
 public class ImageMetadataConverter {
 

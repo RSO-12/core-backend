@@ -1,4 +1,4 @@
-package si.fri.rso.samples.imagecatalog.services.beans;
+package jb.workclock.services.beans;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
 
-import si.fri.rso.samples.imagecatalog.lib.ImageMetadata;
-import si.fri.rso.samples.imagecatalog.models.converters.ImageMetadataConverter;
-import si.fri.rso.samples.imagecatalog.models.entities.ImageMetadataEntity;
+import jb.workclock.lib.ImageMetadata;
+import jb.workclock.models.converters.ImageMetadataConverter;
+import jb.workclock.models.entities.ImageMetadataEntity;
 
 
 @RequestScoped

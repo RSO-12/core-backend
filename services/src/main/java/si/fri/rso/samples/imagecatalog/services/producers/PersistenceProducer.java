@@ -1,4 +1,4 @@
-package si.fri.rso.samples.imagecatalog.services.producers;
+package jb.workclock.services.producers;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Disposes;
@@ -9,7 +9,7 @@ import javax.persistence.PersistenceUnit;
 
 public class PersistenceProducer {
 
-    @PersistenceUnit(unitName = "image-catalog-jpa")
+    @PersistenceUnit(unitName = "work-clock-jpa")
     private EntityManagerFactory emf;
 
     @Produces

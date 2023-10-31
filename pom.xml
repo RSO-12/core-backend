@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>si.fri.rso.samples</groupId>
-    <artifactId>image-catalog</artifactId>
+    <groupId>jb</groupId>
+    <artifactId>work-clock</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
@@ -71,23 +71,23 @@
             </dependency>
 
             <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-api</artifactId>
+                <groupId>jb</groupId>
+                <artifactId>work-clock-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-models</artifactId>
+                <groupId>jb</groupId>
+                <artifactId>work-clock-models</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-services</artifactId>
+                <groupId>jb</groupId>
+                <artifactId>work-clock-services</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-lib</artifactId>
+                <groupId>jb</groupId>
+                <artifactId>work-clock-lib</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

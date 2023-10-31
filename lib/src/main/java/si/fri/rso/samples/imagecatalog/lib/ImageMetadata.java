@@ -1,4 +1,4 @@
-package si.fri.rso.samples.imagecatalog.lib;
+package jb.workclock.lib;
 
 import java.time.Instant;
 

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: image-catalog-deployment
+  name: work-clock-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: image-catalog
+      app: work-clock
   template:
     metadata:
       labels:
-        app: image-catalog
+        app: work-clock
     spec:
       containers:
-        - image: prporso/image-catalog:test #to be changed
-          name: image-catalog
+        - image: prporso/work-clock:test #to be changed
+          name: work-clock
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
               value: #connection url
@@ -31,7 +31,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: image-catalog
+  name: work-clock
 spec:
   type: LoadBalancer
   ports:
@@ -39,4 +39,4 @@ spec:
       protocol: TCP
       targetPort: server
   selector:
-    app: image-catalog
+    app: work-clock

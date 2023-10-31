@@ -1,4 +1,4 @@
-package si.fri.rso.samples.imagecatalog.models.entities;
+package jb.workclock.models.entities;
 
 import javax.persistence.*;
 import java.time.Instant;
