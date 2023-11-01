@@ -9,6 +9,10 @@ on:
 
 env:
   DOCKER_IMAGE: janezs12/workclock
+  PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
+  CLUSTER_NAME: wc
+  REGION: us-central1
+
 
 jobs:
   setup-build-publish-deploy:
@@ -56,4 +60,15 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Configure kubectl
+        run: gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.REGION }} --project ${{ env.PROJECT_ID }}
+
+      - name: Apply Kubernetes Deployment
+        run: kubectl apply -f ./k8s/deployment.yml
       
