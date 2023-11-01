@@ -18,4 +18,10 @@ public class UserEntity {
 
     @Column(name = "name")
     public String name;
+
+    @Column(name = "gmail")
+    public String gmail;
+
+    @Column(name = "password")
+    public String password;
 }

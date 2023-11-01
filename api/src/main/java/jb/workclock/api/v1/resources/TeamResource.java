@@ -10,7 +10,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import jb.workclock.lib.Team;
-import jb.workclock.services.beans.TeamBeam;
+import jb.workclock.services.beans.TeamBean;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -33,7 +33,7 @@ public class TeamResource {
         private Logger log = Logger.getLogger(TeamResource.class.getName());
 
         @Inject
-        private TeamBeam teamBeam;
+        private TeamBean teamBean;
 
         @Context
         protected UriInfo uriInfo;
@@ -44,7 +44,7 @@ public class TeamResource {
                                         @Header(name = "X-Total-Count", description = "Number of objects in list") }) })
         @GET
         public Response getTeams() {
-                List<Team> teams = teamBeam.getTeams();
+                List<Team> teams = teamBean.getTeams();
                 return Response.status(Response.Status.OK).entity(teams).build();
         }
 }

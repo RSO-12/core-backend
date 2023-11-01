@@ -16,12 +16,12 @@ import com.kumuluz.ee.rest.utils.JPAUtils;
 import jb.workclock.lib.Team;
 import jb.workclock.models.converters.TeamConverter;
 import jb.workclock.models.entities.TeamEntity;
-import jb.workclock.services.beans.BaseBeam;
+import jb.workclock.services.beans.BaseBean;
 
 @RequestScoped
-public class TeamBeam extends BaseBeam {
+public class TeamBean extends BaseBean {
 
-    private Logger log = Logger.getLogger(TeamBeam.class.getName());
+    private Logger log = Logger.getLogger(TeamBean.class.getName());
 
     public List<Team> getTeams() {
 

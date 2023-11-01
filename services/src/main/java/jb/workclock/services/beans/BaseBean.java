@@ -15,7 +15,7 @@ import com.kumuluz.ee.rest.utils.JPAUtils;
 
 
 @RequestScoped
-public class BaseBeam {
+public class BaseBean {
 
     @Inject
     protected EntityManager em;
