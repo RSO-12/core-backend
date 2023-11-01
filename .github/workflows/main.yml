@@ -56,11 +56,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Deploy to GKE
-        uses: myrotvorets/kubectl-action@2.0.0
-        with:
-          config: ${{ secrets.KUBE_CONFIG_DATA }}
-          version: latest
-          args: apply -f ./k8s/deployment.yaml
-
       
