@@ -72,5 +72,5 @@ jobs:
         run: gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.REGION }} --project ${{ env.PROJECT_ID }}
 
       - name: Apply Kubernetes Deployment
-        run: kubectl apply -f ./k8s/deployment.yml
+        run: kubectl apply -f ./k8s/deployment.yaml
       
