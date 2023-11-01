@@ -32,9 +32,9 @@ jobs:
           cache: maven
 
       - name: Update Deployment Image Tag
-          run: |
-            # Replace the image tag in the Deployment YAML file
-            sed -i 's/{{ .Values.imageTag }}/'"${{ env.IMAGE_TAG }}"'/' ./k8s/deployment.yaml
+        run: |
+          # Replace the image tag in the Deployment YAML file
+          sed -i 's/{{ .Values.imageTag }}/'"${{ env.IMAGE_TAG }}"'/' ./k8s/deployment.yaml
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
