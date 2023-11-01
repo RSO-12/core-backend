@@ -12,7 +12,7 @@ mvn clean package
 cd api/target
 java -jar work-clock-api-1.0.0-SNAPSHOT.jar
 ```
-Available at: localhost:8080/v1/workevent
+Available at: localhost:3000/v1/workevent
 
 ## Docker commands
 ```bash

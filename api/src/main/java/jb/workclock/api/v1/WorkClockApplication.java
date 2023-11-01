@@ -13,7 +13,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
 @OpenAPIDefinition(info = @Info(title = "WorkClock", version = "v1",
         contact = @Contact(email = "janez.sedeljsak@gmail.com"),
         license = @License(name = "dev"), description = "API for managing work time."),
-        servers = @Server(url = "http://localhost:8080/"))
+        servers = @Server(url = "http://localhost:3000/"))
 @ApplicationPath("/v1")
 public class WorkClockApplication extends Application {
 
