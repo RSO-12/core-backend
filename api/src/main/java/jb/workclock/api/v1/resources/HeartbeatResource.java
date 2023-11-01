@@ -26,7 +26,7 @@ public class HeartbeatResource {
         @Produces(MediaType.APPLICATION_JSON)
         public Response getHelloWorld() {
                 var response = new HashMap<String, String>();
-                response.put("message", "Hello, World!!!");
+                response.put("message", "Hello, World!!!!!");
                 return Response.status(Response.Status.OK).entity(response).build();
         }
 }
