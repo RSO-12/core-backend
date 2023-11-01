@@ -13,7 +13,7 @@ spec:
         app: work-clock
     spec:
       containers:
-        - image: janezs12/workclock:1.0.3
+        - image: janezs12/workclock:main
           imagePullPolicy: Always
           name: work-clock
           env:
