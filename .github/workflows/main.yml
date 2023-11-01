@@ -13,7 +13,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
   CLUSTER_NAME: wc
   REGION: us-central1
-  IMAGE_TAG: 1.0.5
+  IMAGE_TAG: 1.0.6
 
 jobs:
   setup-build-test:
