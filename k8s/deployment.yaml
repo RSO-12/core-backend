@@ -13,7 +13,7 @@ spec:
         app: work-clock
     spec:
       containers:
-        - image: janezs12/workclock:1.0.1
+        - image: janezs12/workclock:1.0.2
           name: work-clock
           env:
           - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
