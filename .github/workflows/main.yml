@@ -50,6 +50,15 @@ jobs:
       - name: Test
         run: mvn --batch-mode test
 
+      - name: Save IMAGE_TAG to a file
+        run: echo "${{ env.IMAGE_TAG }}" > image_tag.txt
+
+      - name: Upload the image_tag.txt file as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: image-tag-artifact
+          path: image_tag.txt
+
 
   publish-deploy:
 
@@ -61,6 +70,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Download the image-tag artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: image-tag-artifact
+
+      - name: Compare IMAGE_TAG
+        run: |
+          stored_image_tag=$(cat image_tag.txt)
+          if [[ "${{ env.IMAGE_TAG }}" != "$stored_image_tag" ]]; then
+            echo "IMAGE_TAG has changed, proceeding with the job."
+          else
+            echo "IMAGE_TAG has not changed, job is not needed."
+            exit 0  # Skip the job
+          fi
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
