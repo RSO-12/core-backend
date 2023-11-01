@@ -49,46 +49,11 @@ jobs:
       - name: Test
         run: mvn --batch-mode test
 
-  cache-image-tag:
-    name: Cache image tag
-    runs-on: ubuntu-latest
-    needs: setup-build-test
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Download the image-tag artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: image-tag-artifact
-
-      - name: Compare IMAGE_TAG
-        run: |
-          stored_image_tag=$(cat image_tag.txt)
-          if [[ "${{ env.IMAGE_TAG }}" != "$stored_image_tag" ]]; then
-            echo "IMAGE_TAG has changed, proceeding with the job."
-            echo "::set-output name=image-tag-changed::true"  # Set the output to 'true' if IMAGE_TAG has changed
-          else
-            echo "IMAGE_TAG has not changed, job is not needed."
-            echo "::set-output name=image-tag-changed::false"  # Set the output to 'false' if IMAGE_TAG has not changed
-          }
-
-      - name: Save IMAGE_TAG to a file
-        run: echo "${{ env.IMAGE_TAG }}" > image_tag.txt
-
-      - name: Upload the image_tag.txt file as an artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: image-tag-artifact
-          path: image_tag.txt
-
   publish-deploy:
     name: Publish docker image and deploy to GKE
     runs-on: ubuntu-latest
-    needs: cache-image-tag
-    if: needs.cache-image-tag.outputs.image-tag-changed == 'true'
+    needs: setup-build-test
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout
