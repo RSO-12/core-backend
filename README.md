@@ -40,6 +40,7 @@ kubectl delete pod work-clock-deployment-84db9697f5-fk9sp
 ## Scale
 ```bash
 kubectl scale deployment/work-clock-deployment-v2 --replicas=0 --namespace=default
+kubectl scale deployment/work-clock-services-deployment-v2 --replicas=0 --namespace=default
 ```
 
 ## Change context

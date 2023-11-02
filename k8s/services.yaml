@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: work-clock-services-deployment-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: work-clock-services
+  template:
+    metadata:
+      labels:
+        app: work-clock-services
+    spec:
+      containers:
+        - image: janezs12/workclock_services:latest
+          imagePullPolicy: Always
+          name: work-clock-services
+          ports:
+            - containerPort: 5000
+              name: services
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: work-clock-services
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5000
+      protocol: TCP
+      targetPort: services
+  selector:
+    app: work-clock-services
