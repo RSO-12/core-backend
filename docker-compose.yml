@@ -2,54 +2,56 @@ version: '3'
 
 services:
   workclock-core:
-    image: janezs12/workclock
-    networks:
-      - workclock-network
+    image: janezs12/workclock-core
     ports:
-      - "3000:3000"
+      - "8002:3000"
     depends_on:
-      - postgres
+      - workclock-db
       - workclock-socket
       - workclock-services
-
-  workclock-services:
-    image: janezs12/workclock_services
     networks:
       - workclock-network
+    environment:
+      KUMULUZEE_DATASOURCES0_CONNECTIONURL: jdbc:postgresql://workclock-db:5432/image-metadata
+
+  workclock-services:
+    image: janezs12/workclock-services
     ports:
-      - "5000:5000"
+      - "8003:5000"
     depends_on:
-      - postgres
+      - workclock-db
+    networks:
+      - workclock-network
 
   workclock-socket:
     image: janezs12/workclock-socket
-    networks:
-      - workclock-network
     ports:
-      - "4000:4000"
+      - "8004:4000"
     init: true
     tty: true
     depends_on:
-      - redis
-
-  postgres:
-    image: postgres:13
+      - workclock-redis
     networks:
       - workclock-network
+
+  workclock-db:
+    image: postgres:13
     environment:
       POSTGRES_USER: dbuser
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: image-metadata
     ports:
-      - "5432:5432"
-
-  redis:
-    image: redis
+      - "8432:5432"
     networks:
       - workclock-network
-    ports:
-      - "4100:6379"
 
+  workclock-redis:
+    image: redis
+
+    ports:
+      - "6200:6379"
+    networks:
+      - workclock-network
 
 networks:
   workclock-network:
