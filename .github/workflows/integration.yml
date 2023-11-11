@@ -19,4 +19,14 @@ jobs:
         run: docker-compose up -d
 
       - name: Wait for services to start
-        run: sleep 10
+        run: sleep 100
+
+      - name: Check Docker service health
+        run: |
+          response_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8002/v1/heartbeat)
+          if [ $response_code -eq 200 ]; then
+            echo "Docker service is online."
+          else
+            echo "Docker service returned an unexpected status code: $response_code"
+            exit 1
+          fi
