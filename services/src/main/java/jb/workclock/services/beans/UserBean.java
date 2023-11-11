@@ -2,6 +2,7 @@ package jb.workclock.services.beans;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.persistence.CacheStoreMode;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.NotFoundException;
@@ -26,9 +27,11 @@ public class UserBean extends BaseBean {
     public List<User> getUsers() {
 
         TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.getAll", UserEntity.class);
+        
+        // disable cache
+        query.setHint("javax.persistence.cache.storeMode", CacheStoreMode.REFRESH);
         List<UserEntity> resultList = query.getResultList();
         return resultList.stream().map(UserConverter::toDto).collect(Collectors.toList());
-
     }
 
     /*public User login(String name, String gmail, String password) {

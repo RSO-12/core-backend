@@ -3,7 +3,7 @@
 ## Prerequisites
 
 ```bash
-docker run -d --name pg-image-metadata -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=image-metadata -p 5432:5432 postgres:13
+docker run -d --name pg-workclock-db -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=workclock-db -p 5432:5432 postgres:13
 ```
 
 ## Build and run commands

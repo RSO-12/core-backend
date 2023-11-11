@@ -9,7 +9,7 @@ kumuluzee:
       port: 3000
   datasources:
     - jndi-name: jdbc/WorkClockDS
-      connection-url: jdbc:postgresql://localhost:5432/image-metadata
+      connection-url: jdbc:postgresql://localhost:8432/workclock-db
       username: dbuser
       password: postgres
 
