@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.JsonSerializable.Base;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
 
@@ -20,8 +21,8 @@ import jb.workclock.models.entities.UserEntity;
 import jb.workclock.services.beans.BaseBean;
 
 @RequestScoped
-public class UserBean extends BaseBean {
-
+public class EventBean extends BaseBean {
+    
     private Logger log = Logger.getLogger(UserBean.class.getName());
 
     public List<User> getUsers() {

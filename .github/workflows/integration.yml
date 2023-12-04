@@ -1,7 +1,6 @@
 name: Integration
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:

@@ -8,7 +8,7 @@ public class UserConverter {
     public static User toDto(UserEntity entity) {
         
         User dto = new User(entity.id, entity.name, entity.gmail, 
-            entity.is_admin, entity.created_by);
+            entity.isAdmin, entity.createdBy);
 
         return dto;
     }
@@ -18,8 +18,8 @@ public class UserConverter {
         entity.id = dto.userId;
         entity.name = dto.name;
         entity.gmail = dto.gmail;
-        entity.is_admin = dto.is_admin;
-        entity.created_by = dto.created_by;
+        entity.isAdmin = dto.isAdmin;
+        entity.createdBy = dto.createdBy;
         return entity;
     }
 

@@ -27,4 +27,13 @@ public class EventEntity {
 
     @Column(name = "notes")
     public String notes;
+
+    @Column(name = "previous_event_id")
+    public Integer previousEventId;
+
+    @Column(name = "user_id")
+    public Integer userId;
+
+    @Column(name = "event_type_id")
+    public Integer eventTypeId;
 }

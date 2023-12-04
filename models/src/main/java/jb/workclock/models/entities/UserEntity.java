@@ -26,8 +26,8 @@ public class UserEntity {
     public String password;
 
     @Column(name = "is_admin")
-    public Boolean is_admin;
+    public Boolean isAdmin;
 
     @Column(name = "created_by")
-    public Integer created_by;
+    public Integer createdBy;
 }
