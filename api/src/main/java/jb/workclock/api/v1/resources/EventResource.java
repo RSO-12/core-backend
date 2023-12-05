@@ -38,27 +38,31 @@ public class EventResource {
     @Context
     protected UriInfo uriInfo;
 
-    @Operation(description = "Get all image Event type.", summary = "Get all Event type")
+    @Operation(description = "Get all Events.", summary = "Get all Events")
     @APIResponses({
             @APIResponse(responseCode = "200",
-                    description = "List of image Event type",
+                    description = "List of Events",
                     content = @Content(schema = @Schema(implementation = Event.class, type = SchemaType.ARRAY)),
                     headers = {@Header(name = "X-Total-Count", description = "Number of objects in list")}
-            )})
+            )
+    })
     @GET
-    public Response getEvent() {
+    public Response getEvents() {
         List<Event> event = eventBean.getEventFilter(uriInfo);
         return Response.status(Response.Status.OK).entity(event).build();
     }
 
 
-    @Operation(description = "Get Event type for an image.", summary = "Get Event type for an image")
+    @Operation(description = "Get Event by ID.", summary = "Get Event by ID")
     @APIResponses({
             @APIResponse(responseCode = "200",
-                    description = "Image Event type",
-                    content = @Content(
-                            schema = @Schema(implementation = Event.class))
-            )})
+                    description = "Event retrieved successfully.",
+                    content = @Content(schema = @Schema(implementation = Event.class))
+            ),
+            @APIResponse(responseCode = "404",
+                    description = "Event not found."
+            )
+    })
     @GET
     @Path("/{eventId}")
     public Response getEvent(@Parameter(description = "Event type ID.", required = true)
@@ -73,12 +77,12 @@ public class EventResource {
         return Response.status(Response.Status.OK).entity(event).build();
     }
 
-    @Operation(description = "Add image Event type.", summary = "Add Event type")
+    @Operation(description = "Create Event.", summary = "Create Event")
     @APIResponses({
             @APIResponse(responseCode = "201",
-                    description = "Event type successfully added."
+                    description = "Event successfully added."
             ),
-            @APIResponse(responseCode = "405", description = "Validation error .")
+            @APIResponse(responseCode = "400", description = "Bad request or validation error.")
     })
     @POST
     public Response createEvent(@RequestBody(
@@ -98,11 +102,15 @@ public class EventResource {
     }
 
 
-    @Operation(description = "Update Event type for an image.", summary = "Update Event type")
+    @Operation(description = "Update Event by ID.", summary = "Update Event by ID")
     @APIResponses({
             @APIResponse(
                     responseCode = "200",
-                    description = "Event type successfully updated."
+                    description = "Event successfully updated."
+            ),
+            @APIResponse(
+                    responseCode = "404",
+                    description = "Event not found."
             )
     })
     @PUT
@@ -125,15 +133,15 @@ public class EventResource {
 
     }
 
-    @Operation(description = "Delete Event type for an image.", summary = "Delete Event type")
+    @Operation(description = "Delete Event by ID.", summary = "Delete Event by ID")
     @APIResponses({
             @APIResponse(
-                    responseCode = "200",
-                    description = "Event type successfully deleted."
+                    responseCode = "204",
+                    description = "Event successfully deleted."
             ),
             @APIResponse(
                     responseCode = "404",
-                    description = "Not found."
+                    description = "Event not found."
             )
     })
     @DELETE
@@ -150,9 +158,4 @@ public class EventResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
-
-
-
-
-
 }
