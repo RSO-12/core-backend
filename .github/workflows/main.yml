@@ -38,11 +38,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Update Deployment Image Tag
-        run: |
-          # Replace the image tag in the Deployment YAML file
-          sed -i 's/{{ .Values.imageTag }}/'"${{ env.IMAGE_TAG }}"'/' ./k8s/deployment.yaml
-
       - name: Install
         run: mvn --show-version --update-snapshots --batch-mode clean install -DskipTests=true
 

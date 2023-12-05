@@ -13,7 +13,7 @@ spec:
         app: work-clock
     spec:
       containers:
-        - image: janezs12/workclock:{{ .Values.imageTag }}
+        - image: janezs12/workclock:latest
           imagePullPolicy: Always
           name: work-clock
           env:
