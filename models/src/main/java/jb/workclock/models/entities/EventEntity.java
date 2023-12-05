@@ -19,10 +19,10 @@ public class EventEntity {
     @Column(name = "name")
     public String name;
 
-    @Column(name = "start")
+    @Column(name = "start_date")
     public Instant start;
 
-    @Column(name = "end")
+    @Column(name = "end_date")
     public Instant end;
 
     @Column(name = "notes")
