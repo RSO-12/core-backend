@@ -43,6 +43,11 @@ kubectl scale deployment/work-clock-deployment-v2 --replicas=0 --namespace=defau
 kubectl scale deployment/work-clock-services-deployment-v2 --replicas=0 --namespace=default
 ```
 
+## Rollout - redeploy
+```bash
+kubectl rollout restart deployment/work-clock-services-deployment-v2
+```
+
 ## Change context
 ```bash
 kubectl config get-contexts
