@@ -48,3 +48,6 @@ kubectl scale deployment/work-clock-services-deployment-v2 --replicas=0 --namesp
 kubectl config get-contexts
 kubectl config use-context local
 ```
+
+## Swagger link
+http://localhost:8002/api-specs/ui
