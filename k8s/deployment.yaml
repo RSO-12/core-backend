@@ -13,7 +13,7 @@ spec:
         app: work-clock
     spec:
       containers:
-        - image: janezs12/workclock:{{ .Values.imageTag }}
+        - image: janezs12/workclock-core:latest
           imagePullPolicy: Always
           name: work-clock
           env:
@@ -22,7 +22,10 @@ spec:
           - name: KUMULUZEE_DATASOURCES0_USERNAME
             value: wwdvuxwy
           - name: KUMULUZEE_DATASOURCES0_PASSWORD
-            value: 9To7p1-B3HIFXW_O_RTm2qS5sWyWOhe5
+            valueFrom:
+              secretKeyRef:
+                name: pg-pass
+                key: password
           ports:
             - containerPort: 3000
               name: server

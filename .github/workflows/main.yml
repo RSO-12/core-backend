@@ -13,7 +13,6 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
   CLUSTER_NAME: wc
   REGION: us-central1
-  IMAGE_TAG: 1.0.6
 
 jobs:
   setup-build-test:
@@ -37,11 +36,6 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-
-      - name: Update Deployment Image Tag
-        run: |
-          # Replace the image tag in the Deployment YAML file
-          sed -i 's/{{ .Values.imageTag }}/'"${{ env.IMAGE_TAG }}"'/' ./k8s/deployment.yaml
 
       - name: Install
         run: mvn --show-version --update-snapshots --batch-mode clean install -DskipTests=true
@@ -108,5 +102,8 @@ jobs:
       - name: Configure kubectl
         run: gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.REGION }} --project ${{ env.PROJECT_ID }}
 
-      - name: Apply Kubernetes Deployment
-        run: kubectl apply -f ./k8s/deployment.yaml
+      - name: Restart both services
+        run: |
+          kubectl apply -f ./k8s/deployment.yaml -f ./k8s/services.yaml
+          kubectl rollout restart work-clock-deployment-v2
+          kubectl rollout restart deployment/work-clock-services-deployment-v2

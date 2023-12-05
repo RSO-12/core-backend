@@ -13,12 +13,27 @@ spec:
         app: work-clock-services
     spec:
       containers:
-        - image: janezs12/workclock_services:latest
+        - image: janezs12/workclock-services:latest
           imagePullPolicy: Always
           name: work-clock-services
           ports:
             - containerPort: 5000
               name: services
+          env:
+            - name: JWT_SECRET
+              value: workclock_jwt_secret
+            - name: DB_NAME
+              value: wwdvuxwy
+            - name: DB_URI
+              value: "flora.db.elephantsql.com:5432"
+            - name: DB_USER
+              value: wwdvuxwy
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-pass
+                  key: password
+            
 
 ---
 

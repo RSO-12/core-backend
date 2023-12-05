@@ -1,0 +1,41 @@
+name: Integration
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Pull Docker images
+        run: docker-compose pull
+
+      - name: Set up Docker Compose
+        run: docker-compose up -d
+
+      - name: Wait for services to start
+        run: sleep 100
+
+      - name: Check Core health
+        run: |
+          response_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8002/v1/heartbeat)
+          if [ $response_code -eq 200 ]; then
+            echo "Docker service is online."
+          else
+            echo "Docker service returned an unexpected status code: $response_code"
+            exit 1
+          fi
+
+      - name: Check Services health
+        run: |
+          response_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8003/heartbeat)
+          if [ $response_code -eq 200 ]; then
+            echo "Docker service is online."
+          else
+            echo "Docker service returned an unexpected status code: $response_code"
+            exit 1
+          fi

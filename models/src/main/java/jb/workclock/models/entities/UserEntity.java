@@ -24,4 +24,10 @@ public class UserEntity {
 
     @Column(name = "password")
     public String password;
+
+    @Column(name = "is_admin")
+    public Boolean isAdmin;
+
+    @Column(name = "created_by")
+    public Integer createdBy;
 }

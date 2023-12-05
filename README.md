@@ -3,7 +3,7 @@
 ## Prerequisites
 
 ```bash
-docker run -d --name pg-image-metadata -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=image-metadata -p 5432:5432 postgres:13
+docker run -d --name pg-workclock-db -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=workclock-db -p 5432:5432 postgres:13
 ```
 
 ## Build and run commands
@@ -43,8 +43,16 @@ kubectl scale deployment/work-clock-deployment-v2 --replicas=0 --namespace=defau
 kubectl scale deployment/work-clock-services-deployment-v2 --replicas=0 --namespace=default
 ```
 
+## Rollout - redeploy
+```bash
+kubectl rollout restart deployment/work-clock-services-deployment-v2
+```
+
 ## Change context
 ```bash
 kubectl config get-contexts
 kubectl config use-context local
 ```
+
+## Swagger link
+http://localhost:8002/api-specs/ui

@@ -4,7 +4,8 @@
         <non-jta-data-source>jdbc/WorkClockDS</non-jta-data-source>
 
         <class>jb.workclock.models.entities.UserEntity</class>
-        <class>jb.workclock.models.entities.TeamEntity</class>
+        <class>jb.workclock.models.entities.EventEntity</class>
+        <class>jb.workclock.models.entities.EventTypeEntity</class>
         <class>jb.workclock.models.converters.InstantAtributeConverter</class>
 
         <properties>
@@ -12,7 +13,6 @@
             <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
             <property name="javax.persistence.sql-load-script-source"
                       value="sql-scripts/init.sql" />
-            <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
         </properties>
     </persistence-unit>
 </persistence>
