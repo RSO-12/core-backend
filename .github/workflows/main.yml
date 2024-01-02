@@ -9,7 +9,7 @@ on:
     branches: ["main"]
 
 env:
-  DOCKER_IMAGE: janezs12/workclock
+  DOCKER_IMAGE: janezs12/workclock-core
   PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
   CLUSTER_NAME: wc
   REGION: us-central1
