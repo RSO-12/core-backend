@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgbouncer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgbouncer
+  template:
+    metadata:
+      labels:
+        app: pgbouncer
+    spec:
+      containers:
+        - name: pgbouncer
+          image: bitnami/pgbouncer:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRESQL_HOST
+              value: flora.db.elephantsql.com
+            - name: POSTGRESQL_DATABASE
+              value: wwdvuxwy
+            - name: POSTGRESQL_USERNAME
+              value: wwdvuxwy
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-pass
+                  key: password
+            - name: PGBOUNCER_PORT
+              value: "5432"
+            - name: PGBOUNCER_DEFAULT_POOL_SIZE
+              value: "100"
+            - name: PGBOUNCER_DATABASE
+              value: "wwdvuxwy"
+            - name: PGBOUNCER_SET_DATABASE_USER
+              value: "wwdvuxwy"
+            - name: PGBOUNCER_SET_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-pass
+                  key: password
+            - name: PGBOUNCER_MAX_CLIENT_CONN
+              value: "2000"
+            - name: PGBOUNCER_POOL_MODE
+              value: transaction
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgbouncer
+  labels:
+    app: pgbouncer
+spec:
+  type: LoadBalancer
+  ports:
+   - port: 5432
+  selector:
+   app: pgbouncer

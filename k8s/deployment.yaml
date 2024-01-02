@@ -18,7 +18,7 @@ spec:
           name: work-clock
           env:
           - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-            value: jdbc:postgresql://flora.db.elephantsql.com:5432/wwdvuxwy
+            value: jdbc:postgresql://34.28.11.42:5432/wwdvuxwy
           - name: KUMULUZEE_DATASOURCES0_USERNAME
             value: wwdvuxwy
           - name: KUMULUZEE_DATASOURCES0_PASSWORD
