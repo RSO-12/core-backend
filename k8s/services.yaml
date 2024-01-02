@@ -25,7 +25,7 @@ spec:
             - name: DB_NAME
               value: wwdvuxwy
             - name: DB_URI
-              value: "34.28.11.42:5432"
+              value: "pgbouncer:5432"
             - name: DB_USER
               value: wwdvuxwy
             - name: DB_PASSWORD
