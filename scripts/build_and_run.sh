@@ -6,7 +6,7 @@ path_socket="../../workclock-socket"
 
 image_core="janezs12/workclock-core"
 image_services="janezs12/workclock-services"
-image_socket="janezs12/workclock-socket"
+image_socket="janezs12/workclock-socket-v3"
 
 
 # Build Docker images

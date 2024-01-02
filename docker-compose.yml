@@ -27,7 +27,7 @@ services:
       DB_URI: workclock-db:5432
 
   workclock-socket:
-    image: janezs12/workclock-socket
+    image: janezs12/workclock-socket-v3
     ports:
       - "8004:4000"
     init: true
