@@ -33,7 +33,7 @@ services:
     init: true
     tty: true
     depends_on:
-      - workclock-redis
+      - workclock-redis-service
     networks:
       - workclock-network
 
@@ -48,7 +48,7 @@ services:
     networks:
       - workclock-network
 
-  workclock-redis:
+  workclock-redis-service:
     image: redis
 
     ports:
