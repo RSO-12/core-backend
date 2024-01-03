@@ -18,6 +18,7 @@ services:
     image: janezs12/workclock-services
     ports:
       - "8003:5000"
+      - "8010:5001"
     depends_on:
       - workclock-db
     networks:

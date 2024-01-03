@@ -26,6 +26,14 @@ spec:
               secretKeyRef:
                 name: pg-pass
                 key: password
+          readinessProbe:
+            httpGet:
+              path: /v1/heartbeat
+              port: server
+            initialDelaySeconds: 50
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           ports:
             - containerPort: 3000
               name: server
@@ -37,7 +45,7 @@ kind: Service
 metadata:
   name: work-clock
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 3000
       protocol: TCP

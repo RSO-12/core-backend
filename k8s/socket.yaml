@@ -17,6 +17,15 @@ spec:
         image: janezs12/workclock-socket-v3
         ports:
         - containerPort: 4000
+          name: socket
+        readinessProbe:
+            httpGet:
+              path: /heartbeat
+              port: socket
+            initialDelaySeconds: 50
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
 
 ---
 
@@ -25,7 +34,7 @@ kind: Service
 metadata:
   name: workclock-socket-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: workclock-socket
   ports:
