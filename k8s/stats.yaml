@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: work-clock-stats-deployment-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: work-clock-stats
+  template:
+    metadata:
+      labels:
+        app: work-clock-stats
+    spec:
+      containers:
+        - image: janezs12/workclock-stats:latest
+          imagePullPolicy: Always
+          name: work-clock-stats
+          ports:
+            - containerPort: 8080
+              name: stats
+          env:
+            - name: POSTGRES_USER
+              value: wwdvuxwy
+            - name: POSTGRES_HOST
+              value: "pgbouncer"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: wwdvuxwy
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-pass
+                  key: password
+          readinessProbe:
+            httpGet:
+              path: /heartbeat
+              port: stats
+            initialDelaySeconds: 50
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: work-clock-stats
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: stats
+  selector:
+    app: work-clock-stats

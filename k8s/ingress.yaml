@@ -32,3 +32,10 @@ spec:
             name: workclock-socket-service
             port:
               number: 4000
+      - path: /stats(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: work-clock-stats
+            port:
+              number: 8080
