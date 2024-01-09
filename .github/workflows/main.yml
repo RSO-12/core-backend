@@ -106,9 +106,11 @@ jobs:
         run: |
           kubectl apply -f ./k8s/deployment.yaml -f ./k8s/services.yaml
           kubectl apply -f ./k8s/redis.yaml -f ./k8s/socket.yaml
+          kubectl apply -f ./k8s/stats.yaml -f ./k8s/ingress.yaml
           kubectl rollout restart deployment/work-clock-deployment-v2
           kubectl rollout restart deployment/work-clock-services-deployment-v2
           kubectl rollout restart deployment/workclock-redis-deployment-v2
+          kubectl rollout restart deployment/workclock-socket-deployment-v2
           kubectl rollout restart deployment/workclock-socket-deployment-v2
           
           
