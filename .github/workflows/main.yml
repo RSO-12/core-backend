@@ -102,7 +102,7 @@ jobs:
       - name: Configure kubectl
         run: gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.REGION }} --project ${{ env.PROJECT_ID }}
 
-      - name: Restart both services
+      - name: Restart the pods
         run: |
           kubectl apply -f ./k8s/deployment.yaml -f ./k8s/services.yaml
           kubectl apply -f ./k8s/redis.yaml -f ./k8s/socket.yaml
@@ -111,6 +111,6 @@ jobs:
           kubectl rollout restart deployment/work-clock-services-deployment-v2
           kubectl rollout restart deployment/workclock-redis-deployment-v2
           kubectl rollout restart deployment/workclock-socket-deployment-v2
-          kubectl rollout restart deployment/workclock-socket-deployment-v2
+          kubectl rollout restart deployment/workclock-stats-deployment-v2
           
           
