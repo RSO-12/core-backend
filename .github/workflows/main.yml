@@ -111,6 +111,6 @@ jobs:
           kubectl rollout restart deployment/work-clock-services-deployment-v2
           kubectl rollout restart deployment/workclock-redis-deployment-v2
           kubectl rollout restart deployment/workclock-socket-deployment-v2
-          kubectl rollout restart deployment/workclock-stats-deployment-v2
+          kubectl rollout restart deployment/work-clock-stats-deployment-v2
           
           
