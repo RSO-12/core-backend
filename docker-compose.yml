@@ -68,7 +68,7 @@ services:
       POSTGRES_HOST: workclock-db
       POSTGRES_PORT: 5432
     ports:
-      - "8005:3030"
+      - "8005:8080"
     depends_on:
       - workclock-core
       - workclock-db
