@@ -17,6 +17,14 @@ spec:
         image: redis
         ports:
         - containerPort: 6379
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - '[ $(df -h / | awk ''FNR == 2 {print $5}'' | cut -d"%" -f1) -lt 80 ]'
+          initialDelaySeconds: 5
+          periodSeconds: 10
 
 
 ---
