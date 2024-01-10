@@ -10,7 +10,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 @OpenAPIDefinition(info = @Info(title = "WorkClock", version = "v1", contact = @Contact(email = "janez.sedeljsak@gmail.com"),
-        license = @License(name = "dev"), description = "API for managing work time."), servers = @Server(url = "http://localhost:3000"))
+        license = @License(name = "dev"), description = "API for managing work time."), servers = @Server(url = "http://127.0.0.1:8002"))
 @ApplicationPath("/v1")
 public class WorkClockApplication extends Application {
 
