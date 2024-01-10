@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: workclock-socket
-        image: janezs12/workclock-socket-v3
+        image: janezs12/workclock-socket-v4
         ports:
         - containerPort: 4000
           name: socket

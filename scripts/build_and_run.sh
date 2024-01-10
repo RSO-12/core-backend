@@ -7,7 +7,7 @@ path_stats="../../workclock-stats"
 
 image_core="janezs12/workclock-core"
 image_services="janezs12/workclock-services"
-image_socket="janezs12/workclock-socket-v3"
+image_socket="janezs12/workclock-socket-v4"
 image_stats="janezs12/workclock-stats"
 
 
