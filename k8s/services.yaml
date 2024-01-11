@@ -36,12 +36,12 @@ spec:
             - name: SMTP_SENDER
               valueFrom:
                 secretKeyRef:
-                  name: smtp
+                  name: smtp-sender
                   key: sender
             - name: SMTP_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: smtp-pass
+                  name: smtp-passwd
                   key: passwd
           readinessProbe:
             httpGet:

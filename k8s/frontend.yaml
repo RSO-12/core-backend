@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: workclock-frontend
-        image: janezs12/workclock-frontend:v1
+        image: janezs12/workclock-frontend:latest
         ports:
         - containerPort: 7000
 
