@@ -33,6 +33,16 @@ spec:
                 secretKeyRef:
                   name: pg-pass
                   key: password
+            - name: SMTP_SENDER
+              valueFrom:
+                secretKeyRef:
+                  name: smtp
+                  key: sender
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: smtp-pass
+                  key: passwd
           readinessProbe:
             httpGet:
               path: /v1/health/heartbeat
