@@ -56,6 +56,13 @@ services:
     networks:
       - workclock-network
 
+  workclock-frontend:
+    image: janezs12/workclock-frontend
+    ports:
+      - "8007:7000"
+    networks:
+      - workclock-network
+
   workclock-db:
     image: postgres:13
     environment:

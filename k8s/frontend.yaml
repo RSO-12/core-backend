@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workclock-frontend-deployment-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workclock-frontend
+  template:
+    metadata:
+      labels:
+        app: workclock-frontend
+    spec:
+      containers:
+      - name: workclock-frontend
+        image: janezs12/workclock-frontend:v1
+        ports:
+        - containerPort: 7000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: workclock-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: workclock-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 7000
